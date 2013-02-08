@@ -1,0 +1,15 @@
+
+= semantic_nested_form_for [:admin, @state] do |f|
+  = f.inputs "details" do
+    =  f.input :state_type, collection: ["one", "three"]
+
+  = f.link_to_add "Add Slide", :slides  
+  = f.semantic_fields_for :slides do |slide|
+    = f.inputs "slides" do
+      = slide.input :position
+      = slide.input :slide_type
+      = slide.input :text
+      = slide.input :background
+      = slide.link_to_remove "Delete"
+  = f.actions do 
+    =  f.action :submit

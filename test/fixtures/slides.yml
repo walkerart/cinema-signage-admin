@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  belongs_to: 
+  position: 1
+  type: 
+  text: MyString
+  background: MyString
+
+two:
+  belongs_to: 
+  position: 1
+  type: 
+  text: MyString
+  background: MyString

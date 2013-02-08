@@ -1,0 +1,13 @@
+rvm ruby-1.9.3-p327-falcon@cinema_wall --create
+
+if ! test "$(rvm info | grep 'revision 37606')"
+  then
+    echo "please update your ruby:"
+    echo "rvm reinstall 1.9.3-p327-falcon --patch falcon -j 3"
+fi
+
+
+
+if ! command -v bundle ; then
+  gem install bundler
+fi
