@@ -38,16 +38,31 @@
     &:nth-child(3n+2){
       padding-right:0px;
     }
-    .label{
-      width:100%;
+    .inputs{
+      .label{
+        width:100%;
+      }
+    
+      .four{
+        //display:none;
+        width:100%;
+       label{
+         display:none;
+       }
+       input[type="text"]{
+         width:100%;
+       }
+      }
+      .title{
+        display:none;
+      }
+      
+      .inputs{
+        padding:5px;
+      }
+    
     }
     
-    .four{
-      display:none;
-    }
-    .title{
-      display:none;
-    }
     
   }
   
