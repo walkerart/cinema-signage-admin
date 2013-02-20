@@ -9,7 +9,14 @@
       = slide.input :position
       = slide.input :slide_type
       = slide.input :text
-      = slide.input :background
+      = slide.input :background_color, as: :radio, collection: ['yellow','blue','red']
+      = slide.input :background_file, as: :file
+      = slide.input :retained_background_file, as: :hidden
+      = slide.input :remove_background_file, as: :boolean
+      = slide.input :background_file_url
+
+      - if slide.object.background_file_uid
+        = link_to "Download #{slide.object.background_file.name}", slide.object.background_file.remote_url
       = slide.link_to_remove "Delete"
   = f.actions do 
     =  f.action :submit
