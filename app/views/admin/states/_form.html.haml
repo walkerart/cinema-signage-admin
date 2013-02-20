@@ -3,7 +3,9 @@
   = f.inputs "details" do
     = f.input :state_type, collection: ["one", "three"]
     = f.input :background_color, as: :radio, collection: [nil, 'yellow','blue','red'],
-      hint: 'Can be overriden by slides', class: 'horizontal'
+      hint: 'Can be overriden by slides',
+      wrapper_html: {class: 'horizontal'},
+      input_html: {class: 'horizontal'}
 
   = f.link_to_add "Add Slide", :slides  
   = f.semantic_fields_for :slides do |slide|
