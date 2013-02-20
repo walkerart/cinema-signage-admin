@@ -32,10 +32,18 @@
 
 .state{
   .fields{
-    width:31%;
+    width:32%;
     float:left;
     padding-right:2%;
+    &:nth-child(3n+2){
+      padding-right:0px;
+    }
+    .label{
+      width:100%;
+    }
+    
   }
+  
 
   a.add_nested_fields{
     clear:both;

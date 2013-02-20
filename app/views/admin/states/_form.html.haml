@@ -9,7 +9,7 @@
   = f.semantic_fields_for :slides do |slide|
     = f.inputs "slides" do
       = slide.input :position
-      = slide.input :slide_type
+      = slide.input :slide_type, as: :radio, collection: ['Blank','Title','Detail']
       = slide.input :text
 
       = slide.inputs "Background" do
