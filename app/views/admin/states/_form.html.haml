@@ -12,8 +12,14 @@
     = f.inputs "slides" do
       = slide.input :position
       = slide.input :slide_type, as: :radio, collection: ['Blank','Title','Detail']
-      = slide.input :text
-
+      .four
+        = slide.input :text
+        = slide.input :text
+        = slide.input :text
+        = slide.input :text
+        = slide.input :text
+      .title  
+        = slide.input :text
       = slide.inputs "Background" do
         = slide.input :background_file, as: :file
         = slide.input :retained_background_file, as: :hidden
@@ -25,3 +31,9 @@
       = slide.link_to_remove "Delete"
   = f.actions do 
     =  f.action :submit
+
+:javascript
+  $( ".choices-group" ).on( "click", function() {
+    console.log('test');
+    //$( "#log" ).html( $("input:checked").val() + " is checked!" );
+  });
