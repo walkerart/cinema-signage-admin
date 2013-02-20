@@ -11,7 +11,7 @@
   = f.semantic_fields_for :slides do |slide|
     = f.inputs "slides" do
       = slide.input :position
-      = slide.inputs "Text" do
+      = slide.inputs "Type" do
         = slide.input :slide_type, as: :radio, collection: ['Blank','Title','Detail'], wrapper_html: {class: 'text_section'}
         .four
           = slide.input :text
@@ -22,12 +22,12 @@
         .title  
           = slide.input :text
           = slide.input :text
-        
-      = slide.inputs "Background" do
-        = slide.input :background_file, as: :file
-        = slide.input :retained_background_file, as: :hidden
-        = slide.input :remove_background_file, as: :boolean
-        = slide.input :background_file_url
+        .background  
+          = slide.inputs "Background" do
+            = slide.input :background_file, as: :file
+            = slide.input :retained_background_file, as: :hidden
+            = slide.input :remove_background_file, as: :boolean
+            = slide.input :background_file_url
   
         - if slide.object.background_file_uid
           = link_to "Download #{slide.object.background_file.name}", slide.object.background_file.remote_url
@@ -39,16 +39,19 @@
 
   
   $( document ).on( "click",'.text_section', function() {
-    console.log();
+    
     var type = $(this).find("input:checked").val()
     if(type === "Title"){
       $(this).parent().find('.four').css('display','none');
+      $(this).parent().find('.background').css('display','none');
       $(this).parent().find('.title').css('display','block');
     }else if(type === "Detail"){
       $(this).parent().find('.title').css('display','none');
+      $(this).parent().find('.background').css('display','none');
       $(this).parent().find('.four').css('display','block');
     }else if(type === "Blank"){
       $(this).parent().find('.title').css('display','none');
       $(this).parent().find('.four').css('display','none');
+      $(this).parent().find('.background').css('display','block');
     }
   });
