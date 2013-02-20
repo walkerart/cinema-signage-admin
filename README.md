@@ -1,9 +1,9 @@
-git clone git@github.com:walkerart/cinema_wall.git
-cd cinema_wall (yes to rvm)
-bundle
-rake db:migrate
-rails s 
-admin@example.com:password@localhost:3000/admin
+git clone git@github.com:walkerart/cinema_wall.git  
+cd cinema_wall (yes to rvm)  
+bundle  
+rake db:migrate  
+rails s  
+admin@example.com:password@localhost:3000/admin  
 
 
 There is no validation, no tests.
