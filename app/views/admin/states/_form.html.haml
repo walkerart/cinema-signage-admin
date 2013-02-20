@@ -7,9 +7,8 @@
   = f.semantic_fields_for :slides do |slide|
     = f.inputs "slides" do
       = slide.input :position
-      = slide.input :slide_type
+      = slide.input :slide_type, as: :radio, collection: ['Blank','Title','Detail']
       = slide.input :text
-      = slide.input :background_color, as: :radio, collection: ['yellow','blue','red']
       = slide.input :background_file, as: :file
       = slide.input :retained_background_file, as: :hidden
       = slide.input :remove_background_file, as: :boolean
