@@ -12,7 +12,7 @@
     = f.inputs "slides" do
       = slide.input :position
       = slide.inputs "Text" do
-        = slide.input :slide_type, as: :radio, collection: ['Blank','Title','Detail']
+        = slide.input :slide_type, as: :radio, collection: ['Blank','Title','Detail'], wrapper_html: {class: 'text_section'}
         .four
           = slide.input :text
           = slide.input :text
@@ -20,6 +20,7 @@
           = slide.input :text
           = slide.input :text
         .title  
+          = slide.input :text
           = slide.input :text
         
       = slide.inputs "Background" do
@@ -35,7 +36,19 @@
     =  f.action :submit
 
 :javascript
-  $( ".choices-group" ).on( "click", function() {
-    console.log('test');
-    //$( "#log" ).html( $("input:checked").val() + " is checked!" );
+
+  
+  $( document ).on( "click",'.text_section', function() {
+    console.log();
+    var type = $(this).find("input:checked").val()
+    if(type === "Title"){
+      $(this).parent().find('.four').css('display','none');
+      $(this).parent().find('.title').css('display','block');
+    }else if(type === "Detail"){
+      $(this).parent().find('.title').css('display','none');
+      $(this).parent().find('.four').css('display','block');
+    }else if(type === "Blank"){
+      $(this).parent().find('.title').css('display','none');
+      $(this).parent().find('.four').css('display','none');
+    }
   });
