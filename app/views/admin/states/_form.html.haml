@@ -1,7 +1,9 @@
 
 = semantic_nested_form_for [:admin, @state] do |f|
   = f.inputs "details" do
-    =  f.input :state_type, collection: ["one", "three"]
+    = f.input :state_type, collection: ["one", "three"]
+    = f.input :background_color, as: :radio, collection: [nil, 'yellow','blue','red'],
+      hint: 'Can be overriden by slides', class: 'horizontal'
 
   = f.link_to_add "Add Slide", :slides  
   = f.semantic_fields_for :slides do |slide|

@@ -1,5 +1,5 @@
 class Slide < ActiveRecord::Base
-  attr_accessible :background, :background_file, :background_color,
+  attr_accessible :background, :background_file,
                   :belongs_to, :position, :text, :slide_type,
                   :retained_background_file, :remove_background_file, :background_file_url
 
@@ -11,5 +11,8 @@ class Slide < ActiveRecord::Base
   def to_s
     "s#{position}e#{state.order}"
   end
-  
+
+  def background_color
+    state.background_color unless new_record?
+  end
 end
