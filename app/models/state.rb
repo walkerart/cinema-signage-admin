@@ -5,7 +5,7 @@ class State < ActiveRecord::Base
   accepts_nested_attributes_for( :slides, 
                                  allow_destroy: true,
                                  limit: 3)
-  attr_accessible :order, :state_type, :slides_attributes
+  attr_accessible :order, :state_type, :slides_attributes, :background_color
 
   after_initialize :set_order
 
