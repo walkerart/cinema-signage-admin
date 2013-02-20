@@ -27,3 +27,24 @@
 // .active_admin       applies to any Active Admin namespace
 // .admin_namespace    applies to the admin namespace (eg: /admin)
 // .other_namespace    applies to a custom namespace named other (eg: /other)
+
+
+
+.state{
+  .fields{
+    width:31%;
+    float:left;
+    padding-right:2%;
+  }
+
+  a.add_nested_fields{
+    clear:both;
+    width:100%;
+    display:block;
+  }
+  .actions{
+    clear:both;
+    width:100%;
+  }
+}
+
