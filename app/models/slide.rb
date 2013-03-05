@@ -1,18 +1,20 @@
 class Slide < ActiveRecord::Base
-  attr_accessible :background, :background_file,
-                  :belongs_to, :position, :text, :slide_type,
-                  :retained_background_file, :remove_background_file, :background_file_url
+  BG_COLORS = {
+    "blue"   => "#00ddf0",
+    "purple" => "#b500f0",
+    "orange" => "#f04200",
+    "yellow" => "#f0dd00",
+    "white"  => "#ffffff",
+    "green"  => "#1bdb00",
+    "pink"   => "#f0003e",
+  }
 
-  belongs_to :state
-  validates_associated :state
 
-  file_accessor :background_file
+  attr_accessible :background_color, :panels_attributes
 
-  def to_s
-    "s#{position}e#{state.order}"
-  end
+  has_many :panels
 
-  def background_color
-    state.background_color unless new_record?
-  end
+  accepts_nested_attributes_for :panels
+  
+
 end

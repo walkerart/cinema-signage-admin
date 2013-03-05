@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130220215248) do
+ActiveRecord::Schema.define(:version => 20130304235916) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -54,6 +54,17 @@ ActiveRecord::Schema.define(:version => 20130220215248) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "panels", :force => true do |t|
+    t.string   "background_color"
+    t.integer  "order"
+    t.integer  "slide_id"
+    t.string   "background_image_uid"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.string   "panel_type"
+    t.text     "detail_text"
+  end
+
   create_table "presentations", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -70,6 +81,7 @@ ActiveRecord::Schema.define(:version => 20130220215248) do
     t.string   "background_file_uid"
     t.string   "background_file_name"
     t.integer  "background_file_size"
+    t.string   "background_color"
   end
 
   create_table "states", :force => true do |t|

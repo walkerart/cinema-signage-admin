@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  background_color: MyString
+  order: 1
+  belongs_to: 
+  background_image_uid: MyString
+
+two:
+  background_color: MyString
+  order: 1
+  belongs_to: 
+  background_image_uid: MyString

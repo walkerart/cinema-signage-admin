@@ -1,0 +1,49 @@
+
+= semantic_nested_form_for [:admin, @slide] do |f|
+  = f.inputs "details" do
+    = f.input :background_color, as: :radio, collection: Slide::BG_COLORS,
+      wrapper_html: {class: 'horizontal'},
+      input_html: {class: 'horizontal'}
+
+  = f.link_to_add "Add Panel", :panels  
+  = f.semantic_fields_for :panels, html: {class: 'panels'} do |panel|
+    = f.inputs "panels" do
+      = panel.input :order, as: :hidden
+      = panel.inputs "Type" do
+        = panel.input :panel_type, as: :radio, collection: Panel::SlideTypes,
+          wrapper_html: {class: 'text_section'}
+        .four
+          = panel.input :detail_text
+        .background  
+          = panel.inputs "Background" do
+            = panel.input :background_image, as: :file
+            = panel.input :retained_background_image, as: :hidden
+
+        - if panel.object.background_image_uid
+          = panel.input :remove_background_image, as: :boolean
+          = link_to "Download #{panel.object.background_image.name}", panel.object.background_image.remote_url
+      = panel.link_to_remove "Delete"
+  = f.actions do 
+    =  f.action :submit
+    
+
+
+:javascript
+
+  $( document ).on( "click",'.text_section', function() {
+    
+    var type = $(this).find("input:checked").val()
+    if(type === "Title"){
+      $(this).parent().find('.four').css('display','none');
+      $(this).parent().find('.background').css('display','none');
+      $(this).parent().find('.title').css('display','block');
+    }else if(type === "Detail"){
+      $(this).parent().find('.title').css('display','none');
+      $(this).parent().find('.background').css('display','none');
+      $(this).parent().find('.four').css('display','block');
+    }else if(type === "Blank"){
+      $(this).parent().find('.title').css('display','none');
+      $(this).parent().find('.four').css('display','none');
+      $(this).parent().find('.background').css('display','block');
+    }
+  });
