@@ -8,6 +8,7 @@ gem 'jquery-rails'
 gem 'activeadmin'
 gem 'nested_form'
 gem 'dragonfly'
+gem 'rack-cache', :require => 'rack/cache'
 gem 'fog'
 
 group :assets do
@@ -17,9 +18,19 @@ group :assets do
 end
 
 
-group :development do
-  gem 'debugger'  
+group :development, :test do
+  gem 'debugger'
 end
 
+group :development do
+  gem 'zeus'
+end
+
+group :test do
+  gem 'cucumber-rails'
+  gem 'database_cleaner'
+  gem 'rspec-rails'
+  gem 'poltergeist'  
+end
 
 

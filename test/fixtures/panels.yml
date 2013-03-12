@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  order: 1
+  background_color: MyString
+  background_file_uid: MyString
+  text: MyText
+  references: 
+
+two:
+  order: 1
+  background_color: MyString
+  background_file_uid: MyString
+  text: MyText
+  references: 

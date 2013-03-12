@@ -1,0 +1,9 @@
+- @slides.each do |slide|
+  = div_for slide do      
+    %h3= link_to "Edit", edit_admin_slide_path(slide)
+    - slide.panels.each do |panel|
+      - if panel.background_file.present?
+        = image_tag panel.background_file.thumb('100x100').url
+      - else
+        %div{class: panel.background_color }
+          = panel.text

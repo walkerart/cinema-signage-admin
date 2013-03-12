@@ -30,14 +30,12 @@
 
 
 
-.state{
+
+.slide{
   .fields{
-    width:32%;
+    width: 30%;
     float:left;
     padding-right:2%;
-    &:nth-child(3n+2){
-      padding-right:0px;
-    }
     .inputs{
       .label{
         width:100%;
@@ -96,3 +94,31 @@
   }
 }
 
+
+
+%li.color_selector {
+  padding: 10px;                   
+  .color {
+    margin-right: 20px;
+  }
+  [data-selected="selected"] {
+    border: 3px solid black !important; 
+  }
+}
+
+.index_content {
+  .panels0 {
+    width: 100%;
+  }   
+  .panels3,
+  .panels2 {
+    .panel {
+      width: 29%;
+      float: left;
+    }
+  }
+}
+
+#index_footer {
+    clear: both;
+}

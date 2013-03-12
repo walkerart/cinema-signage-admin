@@ -1,0 +1,35 @@
+- if @slide.errors.present?
+  .flashes
+    - @slide.errors.each do |e,message|
+      .flash.flash_error= message
+        
+= semantic_nested_form_for [:admin, @slide] do |f|
+  %ol.sortable
+    = f.semantic_fields_for :panels do |panel|
+      %li.panel
+        = panel.inputs "Panel" do
+          = panel.input :order, as: :hidden
+          = panel.input :text
+          = panel.input :background_color, as: :hidden
+          %li.color_selector
+            - Slide::Colors.each do |k,v|
+              %span.color{style: "background-color: #{v};",
+                data: {selected: ('selected' if panel.object.background_color == v ),
+                  color: v }}
+                = k
+
+          %li 
+            - if file = panel.object.background_file
+              = link_to file.remote_url do
+                Download                
+                = image_tag file.thumb('100x100').url
+                
+                
+              
+          = panel.input :background_file, as: :file
+          = panel.input :retained_background_file, as: :hidden
+          = panel.input :remove_background_file, as: :boolean
+          = panel.link_to_remove "Remove Panel"
+
+    = f.link_to_add "Add Panel", :panels
+  = f.submit "Save Slide"
