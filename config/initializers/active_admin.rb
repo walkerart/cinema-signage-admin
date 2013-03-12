@@ -92,7 +92,7 @@ ActiveAdmin.setup do |config|
   # roots for each namespace.
   #
   # Default:
-  # config.root_to = 'dashboard#index'
+  config.root_to = 'slides#index'
 
   # == Admin Comments
   #
@@ -101,6 +101,7 @@ ActiveAdmin.setup do |config|
   #
   # Default:
   # config.allow_comments = true
+  config.allow_comments = false
   #
   # You can turn them on and off for any given namespace by using a
   # namespace config block.
