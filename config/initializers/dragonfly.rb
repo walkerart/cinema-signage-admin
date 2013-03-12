@@ -21,7 +21,7 @@ module S3
 
 end
 
-cinema_wall = Dragonfly['cinema-wall']
+cinema_wall = Dragonfly[:images]
 cinema_wall.configure_with(S3) do |c|
   c.datastore.configure do |store|
     store.bucket_name = 'cinema-wall'
