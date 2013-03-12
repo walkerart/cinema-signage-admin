@@ -29,7 +29,8 @@
           = panel.input :background_file, as: :file
           = panel.input :retained_background_file, as: :hidden
           = panel.input :remove_background_file, as: :boolean
-          = panel.link_to_remove "Remove Panel"
-
-    = f.link_to_add "Add Panel", :panels
-  = f.submit "Save Slide"
+          -# = panel.link_to_remove "Remove Panel"
+    -# these links shouldn't be needed because of the "New" action shortcuts        
+    -# = f.link_to_add "Add Panel", :panels
+  .clear_both  
+    = f.submit "Save Slide"
