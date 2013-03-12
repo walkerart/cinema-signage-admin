@@ -1,37 +1,75 @@
 ActiveAdmin.register Slide do
   form partial: "form"
+  config.sort_order = "order_asc" # wierd
+  config.filters = false
+
+  batch_action :reorder do
+    ids_and_orders = params[:slides].map{|k,v| [k.to_i, v[:order].to_i] } #cleansing
+    results = ids_and_orders.collect  do |id, order|
+
+      slide = Slide.update(id, order: order)
+      slide.order == order and slide.valid?
+    end
+    render :json => "updated #{results.size} Slides"
+  end
 
 
   index as: :block do |slide|
-    div for: slide do      
-      # resource_selection_cell slide
-      h3 do
-        link_to "Edit", edit_admin_slide_path(slide)
-      end
-      ol class: "panels#{slide.panels.count}" do
+    # this is kindof a hack to get rid of the default "New Slide" link
+    # this should really be configurable, consider a pull request
+    active_admin_config.clear_action_items!
+
+    active_admin_config.add_action_item only: :index do
+      link_to  "New Slide (Full Panel)" , new_admin_slide_path(panels: 1)
+    end
+
+    active_admin_config.add_action_item only: :index do
+      link_to  "New Slide (3 Panel)" , new_admin_slide_path(panels: 3)
+    end
+
+
+    div for: slide do
+
+      ol class: "panels panels#{slide.panels.count}" do
+        input name: "slides[#{slide.id}][order]", type: :hidden, value: slide.order
+        li class: 'selection_cell' do
+          resource_selection_cell slide
+        end
         slide.panels.each do |panel|
           li class: 'panel' do
             if panel.background_file.present?
-              image_tag panel.background_file.thumb('100x100').url
+              # RANDOM: height set in css also: 130px
+              image_tag panel.background_file.process(:resize, 'x130').url, width: '100%', height: '100%'
             else
-              div style: "background-color: #{panel.background_color};" do
-                panel.text
+              div class: 'text', style: "background-color: #{panel.background_color};" do
+                para class: 'text' do
+                  panel.text
+                end
               end
             end
           end
         end
+        li class: 'panel_actions' do
+          h3 do
+            link_to "Edit", edit_admin_slide_path(slide)
+          end
+        end
+
       end
+      div class: 'clear_both'
     end
   end
 
-  action_item do
-    link_to  "New Slide (Full Panel)" , new_admin_slide_path(panels: 1)
-  end
+  # see hack in index block above
+  # action_item only: :index do
+  #   link_to  "New Slide (Full Panel)" , new_admin_slide_path(panels: 1)
+  # end
 
-  action_item do
-    link_to  "New Slide (3 Panel)" , new_admin_slide_path(panels: 3)
-  end
+  # action_item only: :index do
+  #   link_to  "New Slide (3 Panel)" , new_admin_slide_path(panels: 3)
+  # end
 
+  
 
   controller do
     def new
