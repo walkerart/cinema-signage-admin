@@ -72,6 +72,30 @@ ActiveAdmin.register Slide do
   
 
   controller do
+    
+    def create
+      @slide = Slide.new
+      @slide.assign_attributes params[:slide]
+      if @slide.save
+        flash[:notice] = "Slide was successfully created"
+        redirect_to admin_slides_path
+      else
+        flash[:errors] = "There were errors submitting this form"
+        render :edit
+      end        
+    end
+
+    def update
+      @slide = Slide.find(params[:id])
+      if @slide.update_attributes(params[:slide])
+        flash[:notice] = "Slide was successfully saved"
+        redirect_to admin_slides_path
+      else
+        flash[:errors] = "There were errors submitting this form"
+        render :edit
+      end
+    end
+
     def new
       @slide = Slide.new
       if params[:panels]
