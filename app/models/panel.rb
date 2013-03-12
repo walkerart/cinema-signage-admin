@@ -2,7 +2,7 @@ class Panel < ActiveRecord::Base
 
   attr_accessible :background_color, :background_file, :order, :slide_id, :text
   attr_accessible :retained_background_file, :remove_background_file
-  default_scope order("'panels'.'order'") # wtf
+  default_scope order("'panels'.'order'") # wtf sqlite bug?
 
   belongs_to :slide
   image_accessor :background_file
