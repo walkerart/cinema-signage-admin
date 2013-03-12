@@ -1,0 +1,105 @@
+
+.slide{
+  .fields{
+    width: 30%;
+    float:left;
+    padding-right:2%;
+    .inputs{
+      .label{
+        width:100%;
+      }
+    
+      .four{
+        display:none;
+        width:100%;
+        li{
+          width:100%;
+        }
+       label{
+         display:none;
+       }
+       input[type="text"]{
+         width: 100%;
+         padding: 5px 0px 5px 0px;
+         height: 30px;
+         margin: 5px 0px 0px 0px;
+       }
+      }
+      .title{
+        display:none;
+        label{
+          display:none;
+        }
+        input[type="text"]{
+          width: 100%;
+          padding: 5px 0px 5px 0px;
+          height: 30px;
+          margin: 5px 0px 0px 0px;
+        }
+      }
+      .background{
+        display:none;
+      }
+      
+      .inputs{
+        padding:5px;
+      }
+    
+    }
+    
+    
+  }
+  
+
+  a.add_nested_fields{
+    clear:both;
+    width:100%;
+    display:block;
+  }
+  .actions{
+    clear:both;
+    width:100%;
+  }
+}
+
+
+
+li.color_selector {
+  padding: 8px;                
+  .color {
+    margin: 5px;
+    padding: 5px;
+  }
+  [data-selected="selected"] {
+    border: 5px solid black !important; 
+  }
+}
+
+.index_content {
+  ol.panels1 li { width: 60%; }
+  ol.panels3 li { width: 20%; }
+  ol li.selection_cell { width: 10%; }
+  ol li.panel_actions { width: 10%; }
+  ol.panels1 li div.text p {
+    padding-top: 50px;
+    font-size: xx-large;
+    text-align: center;
+  }
+  ol li {
+    float: left;
+    height: 130px;
+  }
+  ol li * {
+    height: 100%;
+  }
+  ol.panels3 li div p.text {      
+    padding: 20px;
+    font-size: large;  
+  }
+}
+.clear_both {
+    clear: both;
+}
+#index_footer {
+    clear: both;
+}
