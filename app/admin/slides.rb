@@ -50,11 +50,12 @@ ActiveAdmin.register Slide do
           end
         end
         li class: 'panel_actions' do
-          h3 do
-            link_to "Edit", edit_admin_slide_path(slide)
+          div class: 'action_items' do
+            span class: 'action_item' do
+              link_to "Edit", edit_admin_slide_path(slide)
+            end
           end
         end
-
       end
       div class: 'clear_both'
     end
