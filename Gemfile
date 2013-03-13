@@ -5,11 +5,13 @@ gem 'sqlite3'
 gem 'haml'
 gem 'jquery-rails'
 
-gem 'activeadmin'
+gem 'activeadmin', github: 'walkerart/active_admin'
 gem 'nested_form'
 gem 'dragonfly'
 gem 'rack-cache', :require => 'rack/cache'
 gem 'fog'
+gem 'puma'
+gem "lograge"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
