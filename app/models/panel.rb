@@ -13,18 +13,20 @@ class Panel < ActiveRecord::Base
 
   # defaults to white if no image or color
   def background
-    background_file.try( :remote_url) || background_color || "#ffffff"
+    background_file.try( :remote_url) ||
+      (background_color unless background_color.blank?) ||
+        "#ffffff"
   end
 
   def panel_type
     case
-    when background_file_uid.nil? && text.nil?
+    when background_file_uid.blank? && text.blank?
       "color"
-    when background_file_uid.present? && text.nil?
+    when background_file_uid.present? && text.blank?
       "image"
     when background_file_uid.present? && text.present?
       "detail"
-    when background_file_uid.nil? && text.present?
+    when background_file_uid.blank? && text.present?
       "headline"
     end
   end
