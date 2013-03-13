@@ -28,3 +28,14 @@ Scenario: First Slide
     </views>
   </cinema>
   """
+
+Scenario: Creating a Full Panel Slide 
+  When I am on slides page
+  And I click on the create full panel slide link
+  Then I should see one panel
+
+Scenario: Creating a three panel Slide 
+  When I am on slides page
+  And I click on the create three panel slide link
+  Then I should see three panels
+
