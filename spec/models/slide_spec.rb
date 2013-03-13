@@ -3,27 +3,28 @@ require 'spec_helper'
 describe Slide do
   
   it "should build a panel if it has none" do
-    subject.panels.size.should eq 1
+    subject.panels.size.should eq 0
   end
 
-  it "should not be valid with 0 panels" do
+  it "should be valid with 0 panels" do
     slide = Slide.new
     slide.panels = []
-    slide.should_not be_valid
+    slide.should be_valid
   end
 
-  it "should not be valid with more than 3 panels" do
+  it "should be valid with more than 3 panels" do
     slide = Slide.new()
     slide.panels.build(text: 'Valid')
     slide.panels.build(text: 'Valid')
     slide.panels.build(text: 'Valid')
-    slide.should_not be_valid
+    slide.panels.build(text: 'Valid')
+    slide.should be_valid
   end
 
-  it "should not be valid with 2 panels" do
+  it "should be valid with 2 panels" do
     slide = Slide.new()
     slide.panels = [Panel.new, Panel.new]
-    slide.should_not be_valid
+    slide.should be_valid
   end
   
   it "should be valid with 1 panel" do
