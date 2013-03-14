@@ -17,10 +17,8 @@ env.hosts = ['ec2-23-22-212-169.compute-1.amazonaws.com']
 def deploy(deploy_assets=True):
     git_pull()
     bundle()
-    whenever()
     if deploy_assets and deploy_assets != 'false':
         precompile()
-    reload_workers()
     zero_downtime_restart()
 
 def meminfo():
