@@ -15,18 +15,6 @@ ActiveAdmin.register Slide do
 
 
   index as: :block do |slide|
-    # this is kindof a hack to get rid of the default "New Slide" link
-    # this should really be configurable, consider a pull request
-    active_admin_config.clear_action_items!
-
-    active_admin_config.add_action_item only: :index do
-      link_to  "New Slide (Full Panel)" , new_admin_slide_path(panels: 1)
-    end
-
-    active_admin_config.add_action_item only: :index do
-      link_to  "New Slide (3 Panel)" , new_admin_slide_path(panels: 3)
-    end
-
 
     div for: slide do
 
@@ -61,14 +49,15 @@ ActiveAdmin.register Slide do
     end
   end
 
-  # see hack in index block above
-  # action_item only: :index do
-  #   link_to  "New Slide (Full Panel)" , new_admin_slide_path(panels: 1)
-  # end
+  action_item only: :index do
+    link_to  "New Slide (Full Panel)" , new_admin_slide_path(panels: 1)
+  end
 
-  # action_item only: :index do
-  #   link_to  "New Slide (3 Panel)" , new_admin_slide_path(panels: 3)
-  # end
+  action_item only: :index do
+    link_to  "New Slide (3 Panel)" , new_admin_slide_path(panels: 3)
+  end
+
+
 
   
 
