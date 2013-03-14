@@ -8,7 +8,6 @@ gem 'haml'
 gem 'jquery-rails'
 
 gem 'activeadmin', github: 'walkerart/active_admin'
-gem 'nested_form'
 gem 'dragonfly'
 gem 'rack-cache', :require => 'rack/cache'
 gem 'fog'
