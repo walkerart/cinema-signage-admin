@@ -32,16 +32,16 @@ def meminfo():
 def view_unicorns():
     run("ps ax | grep unicorn_rails")
 
-def pid(service):
+def pid_path(service):
     return "{}/tmp/pids/{}.pid".format(env.project_path, service)
 
 def master_pid():
-    pid = run("cat {}".format(pid('unicorn')))
+    pid = run("cat {}".format(pid_path('unicorn')))
     print pid
     return pid
 
 def delayed_job_pid():
-    pid = run("cat {}".format(pid('delayed_job')))
+    pid = run("cat {}".format(pid_path('delayed_job')))
     print pid
     return pid
 
@@ -107,6 +107,7 @@ def rake(args):
     with cd(env.project_path):
         run('rake %s' % args)
 
+
 def bundle():
     with cd(env.project_path):
         run('bundle install --binstubs --without development test --deployment')
@@ -115,8 +116,8 @@ def sup(command,service):
     'use: fab sup:thin,restart'
     return sudo('supervisorctl {} {}'.format(command,service))
 
-def tail(number=200):
-    run("tail -n {} collections/log/$RAILS_ENV.log".format(number))
+def tail(number=200, log='production'):
+    run("tail -n {} {}/log/{}.log".format(number, env.project_path, log))
 
 def rvm():
     with settings(warn_only=True):
@@ -124,21 +125,28 @@ def rvm():
     if rvm_missing:
         run("curl -L https://get.rvm.io | bash -s stable")    
         
-# sudo apt-get install zlib1g zlib1g-dev build-essential sqlite3 libsqlite3-dev openssl libssl-dev libyaml-dev
+
 def setup():
-    "requires user, git, curl, libxml2-dev, libxslt-dev, libsqlite3-dev and access as user on remote machine"
+    """requires:
+         - user, git, curl, libxml2-dev, libxslt-dev, libsqlite3-dev (should use puppet)
+         - ssh  access as user on remote machine (see top of file)
+         - configure nginx with upstream socket (should use puppet)
+         - set RAILS_ENV=production in /etc/environment (sohuld use puppet)
+    """
     with settings(warn_only=True):
         if run('cat setup-complete').succeeded:
-            return "complete"
-    # run("mkdir -p {}".format(env.project_path))
-    # run("git clone {}".format(prompt("repo:")))
-    # rvm()
-    # run('rvm install 1.9.3')
-    # with cd(env.project_path):
-        # run("rvm info")
-        # run("gem install bundler")
-    # bundle()
+            print green("complete")
+            return True
+    run("mkdir -p {}".format(env.project_path))
+    run("git clone {}".format(prompt("repo:")))
+    rvm()
+    run('rvm install 1.9.3')
+    with cd(env.project_path):
+        run("rvm info")
+        run("gem install bundler")
+    bundle()
     rake("db:create")
     rake("db:schema:load")
+    rake("db:seed")
     start_server()
-    touch("setup-complete")
+    run("touch setup-complete")
