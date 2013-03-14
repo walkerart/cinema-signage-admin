@@ -12,7 +12,7 @@ gem 'nested_form'
 gem 'dragonfly'
 gem 'rack-cache', :require => 'rack/cache'
 gem 'fog'
-gem 'puma'
+gem 'unicorn'
 gem "lograge"
 
 group :assets do
