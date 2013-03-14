@@ -1,9 +1,9 @@
 $(document).on 'ready activateSortable', ->
   $('.sortable').sortable
-    items: '> .fields'
+    items: '> .panel'
     axis: 'x'    
     update: (event, ui)->
-      $.each $('.sortable > .fields'), (i, li) ->
+      $.each $('.sortable > .panel'), (i, li) ->
         #using rails naming convention of name="object[attribute]"
         $(li).find("input[name$='order]']").val(i)
 

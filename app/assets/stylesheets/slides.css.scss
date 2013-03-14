@@ -1,64 +1,10 @@
-.slide{
-  .fields{
-    width: 30%;
-    float:left;
-    padding-right:2%;
-    .inputs{
-      .label{
-        width:100%;
-      }
-    
-      .four{
-        display:none;
-        width:100%;
-        li{
-          width:100%;
-        }
-       label{
-         display:none;
-       }
-       input[type="text"]{
-         width: 100%;
-         padding: 5px 0px 5px 0px;
-         height: 30px;
-         margin: 5px 0px 0px 0px;
-       }
-      }
-      .title{
-        display:none;
-        label{
-          display:none;
-        }
-        input[type="text"]{
-          width: 100%;
-          padding: 5px 0px 5px 0px;
-          height: 30px;
-          margin: 5px 0px 0px 0px;
-        }
-      }
-      .background{
-        display:none;
-      }
-      
-      .inputs{
-        padding:5px;
-      }
-    
-    }
-    
-    
-  }
-  
+form.slide li.panel{
+  float:left;
+  margin-right: 10px;
+}
 
-  a.add_nested_fields{
-    clear:both;
-    width:100%;
-    display:block;
-  }
-  .actions{
-    clear:both;
-    width:100%;
-  }
+form.slide li.panel fieldset{
+  margin-bottom: 0px;
 }
 
 
