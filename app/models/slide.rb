@@ -14,7 +14,7 @@ class Slide < ActiveRecord::Base
   accepts_nested_attributes_for :panels, allow_destroy: true
   attr_accessible :panels_attributes, :order, :color
 
-  def color
+  def background_color
     @color || "#ffffff"
   end
 

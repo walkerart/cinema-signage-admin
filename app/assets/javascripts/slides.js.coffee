@@ -24,8 +24,10 @@ $(document).on 'ready activateSortable', ->
 
 $(document).on 'click', '.color', (event)->
   color = $(event.target)
-  bg = color.closest('.panel').find("input[name$='background_color]']")
+  bg = color.closest('.color_selector').find("input[name$='color]']")
+  console.log color.data('color')
   bg.attr('value', color.data('color'))
+  console.log bg.attr('value')
   $.each color.siblings(), (i, obj)->
     $(obj).removeAttr('data-selected')
   color.attr('data-selected', 'selected')

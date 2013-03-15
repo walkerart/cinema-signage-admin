@@ -4,20 +4,21 @@
       .flash.flash_error= message
         
 = semantic_form_for [:admin, @slide] do |f|
+  = f.inputs "Color", class: 'color_selector' do
+    = f.input :color, as: :hidden
+    - Slide::Colors.each do |k,v|
+      %span.color{style: "background-color: #{v};",
+        data: {selected: ('selected' if f.object.color == v ),
+          color: v }}
+        = k
+
+
   %ol.sortable
     = f.semantic_fields_for :panels do |panel|
       %li.panel
         = panel.inputs "Panel" do
           = panel.input :order, as: :hidden
           = panel.input :text
-          = panel.input :background_color, as: :hidden
-          %li.color_selector
-            - Slide::Colors.each do |k,v|
-              %span.color{style: "background-color: #{v};",
-                data: {selected: ('selected' if panel.object.background_color == v ),
-                  color: v }}
-                = k
-
           %li 
             - if file = panel.object.background_file
               = link_to file.remote_url do

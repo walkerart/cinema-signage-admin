@@ -1,6 +1,6 @@
 class Panel < ActiveRecord::Base
 
-  attr_accessible :background_color, :background_file, :order, :slide_id, :text
+  attr_accessible :background_file, :order, :slide_id, :text
   attr_accessible :retained_background_file, :remove_background_file
   default_scope order("'panels'.'order'") # wtf sqlite bug?
 
@@ -11,15 +11,9 @@ class Panel < ActiveRecord::Base
     order.nil? ? 0 : order
   end
 
-  def color
-    slide.try :color unless background_file_uid.present?
-  end
-
   # defaults to white if no image or color
   def background
-    background_file.try( :remote_url) ||
-      (background_color unless background_color.blank?) ||
-        "#ffffff"
+    background_file.try( :remote_url) || color
   end
 
   def panel_type

@@ -29,7 +29,7 @@ ActiveAdmin.register Slide do
               # RANDOM: height set in css also: 130px
               image_tag panel.background_file.process(:resize, 'x130').url, width: '100%', height: '100%'
             else
-              div class: 'text', style: "background-color: #{panel.background_color};" do
+              div class: 'text', style: "background-color: #{panel.slide.color};" do
                 para class: 'text' do
                   panel.text
                 end
