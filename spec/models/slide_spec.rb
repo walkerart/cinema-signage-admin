@@ -2,10 +2,6 @@ require 'spec_helper'
 
 describe Slide do
   
-  it "should build a panel if it has none" do
-    subject.panels.size.should eq 0
-  end
-
   it "should be valid with 0 panels" do
     slide = Slide.new
     slide.panels = []
@@ -49,5 +45,10 @@ describe Slide do
     slide = Slide.new()
     slide.panels = [Panel.new, Panel.new, Panel.new]
     slide.slide_type.should eq 'three'
+  end
+
+  it "offers default color to panels" do
+    slide = Slide.new
+    slide.color.should eq "#ffffff"
   end
 end

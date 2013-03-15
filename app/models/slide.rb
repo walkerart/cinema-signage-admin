@@ -12,7 +12,11 @@ class Slide < ActiveRecord::Base
   default_scope order("'slides'.'order'") # wtf sqlite bug?
   has_many :panels
   accepts_nested_attributes_for :panels, allow_destroy: true
-  attr_accessible :panels_attributes, :order
+  attr_accessible :panels_attributes, :order, :color
+
+  def color
+    @color || "#ffffff"
+  end
 
   def slide_type
     {1 => 'one', 3 => 'three'}.fetch panels.size, nil

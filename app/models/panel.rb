@@ -11,6 +11,10 @@ class Panel < ActiveRecord::Base
     order.nil? ? 0 : order
   end
 
+  def color
+    slide.try :color unless background_file_uid.present?
+  end
+
   # defaults to white if no image or color
   def background
     background_file.try( :remote_url) ||
@@ -22,12 +26,10 @@ class Panel < ActiveRecord::Base
     case
     when background_file_uid.blank? && text.blank?
       "color"
-    when background_file_uid.present? && text.blank?
+    when background_file_uid.present?
       "image"
-    when background_file_uid.present? && text.present?
-      "detail"
     when background_file_uid.blank? && text.present?
-      "headline"
+      "detail"
     end
   end
 
