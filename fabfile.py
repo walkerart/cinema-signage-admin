@@ -3,7 +3,7 @@ from fabric.context_managers import hide
 from fabric.colors import green, yellow
 # recommended .ssh/config entry:
 # Host ec2-23-22-212-169.compute-1.amazonaws.com
-#      IdentityFile ~/.ssh/walker-aws.pem
+#      IdentityFile ~/.ssh/deployer.pem
 #      ControlPersist 3600
 #      ControlPath ~/.ssh/master-%r@%h:%p
 #      User deployer
@@ -19,6 +19,7 @@ def deploy(deploy_assets=True):
     bundle()
     if deploy_assets and deploy_assets != 'false':
         precompile()
+    rake('db:migrate')    
     zero_downtime_restart()
 
 def meminfo():
