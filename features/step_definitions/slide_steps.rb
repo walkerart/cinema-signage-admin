@@ -59,3 +59,36 @@ end
 Then(/^I should see three panels$/) do
   page.should have_selector('.panel', count: 3)
 end
+
+When(/^I create a three panel slide$/) do
+  visit new_admin_slide_path(panels: 3)
+end
+
+When(/^I add an image to the first panel$/) do
+  pending
+end
+
+When(/^I fill in text with "(.*?)" within the first panel$/) do |arg1|
+  pending
+end
+
+Then(/^I should see a image field on the first panel$/) do
+  find('.panel:first').should have_selector("input[type='file']")
+end
+
+Then(/^I should see text areas on the other two$/) do
+  first, *other_two = *all('.panel')
+  other_two.size.should == 2
+  other_two.each do |panel|
+    panel.should have_selector("textarea")
+  end
+end
+
+Then(/^I should be able to toggle image\/text fields on each panel$/) do
+  all('.panel').each do |panel|
+    within panel do 
+      click_link "image"
+      panel.should have_selector('input.file')
+    end
+  end
+end

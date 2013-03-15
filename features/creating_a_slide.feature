@@ -5,7 +5,7 @@ I want to display show information on the wall
 In order to sell more tickets
 
 The "First Slide" scenario is the bare minimum amount of work that would need
-to be done to get a working export of slide data.
+to be done to get a working export of slide data - which is mearly creating it.
 
 Scenario: First Slide
   When I am creating a new slide
@@ -39,3 +39,11 @@ Scenario: Creating a three panel Slide
   And I click on the create three panel slide link
   Then I should see three panels
 
+Scenario: Creating a three panel slide with images
+  When I create a three panel slide
+  Then I should see a image field on the first panel
+  And I should see text areas on the other two
+
+Scenario: Toggling a panel
+  When I create a three panel slide
+  Then I should be able to toggle image/text fields on each panel
