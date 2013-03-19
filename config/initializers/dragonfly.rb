@@ -16,6 +16,9 @@ module S3
 end
 
 Dragonfly[:images].configure_with(S3) do |c|
+  c.url_format = '/cinema_wall/admin/media/:job/:basename.:format'
+  c.url_host = 'http://walkerart.org' if Rails.env.production?
+
   c.datastore.configure do |store|
     store.bucket_name = 'cinema-wall'
     store.storage_headers = {
