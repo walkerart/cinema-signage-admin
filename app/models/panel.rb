@@ -18,7 +18,7 @@ class Panel < ActiveRecord::Base
 
   # defaults to white if no image or color
   def background
-    background_file.try( :remote_url) || slide.color
+    background_file.try( :remote_url) || slide.background_color
   end
 
   def panel_type
