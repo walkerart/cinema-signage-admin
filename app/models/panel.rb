@@ -5,7 +5,12 @@ class Panel < ActiveRecord::Base
   default_scope order("'panels'.'order'") # wtf sqlite bug?
 
   belongs_to :slide
-  image_accessor :background_file
+  image_accessor :background_file do
+    copy_to :background_thumb do |a|
+      a.thumb('x130')
+    end
+  end
+  image_accessor :background_thumb
 
   def position
     order.nil? ? 0 : order

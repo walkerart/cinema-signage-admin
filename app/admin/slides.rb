@@ -25,9 +25,9 @@ ActiveAdmin.register Slide do
         end
         slide.panels.each do |panel|
           li class: 'panel' do
-            if panel.background_file.present?
-              # RANDOM: height set in css also: 130px
-              image_tag panel.background_file.process(:resize, 'x130').url, width: '100%', height: '100%'
+            if panel.background_thumb.present?
+              # stores thumbnail on save, one time only, see: Panel.rb
+              image_tag panel.background_thumb.remote_url, width: '100%', height: '100%'
             else
               div class: 'text', style: "background-color: #{panel.slide.color};" do
                 para class: 'text' do
