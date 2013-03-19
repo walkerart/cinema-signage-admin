@@ -47,8 +47,8 @@ describe Slide do
     slide.slide_type.should eq 'three'
   end
 
-  it "offers default color to panels" do
+  it "offers default color to panels through #background_color" do
     slide = Slide.new
-    slide.color.should eq "#ffffff"
+    slide.background_color.should eq "#ffffff"
   end
 end
