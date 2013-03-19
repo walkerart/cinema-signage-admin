@@ -1,20 +1,15 @@
-git clone git@github.com:walkerart/cinema_wall.git  
-cd cinema_wall (yes to rvm)  
-bundle  
-rake db:migrate  
-rails s  
-admin@example.com:password@localhost:3000/admin  
+git clone git@github.com:walkerart/cinema_wall.git
+cd cinema_wall (yes to rvm)
+bundle
+rake db:migrate # or rake db:schema:load
+rake db:seed # to create the example user
+rails s
+admin@example.com:password@localhost:3000/cinema_wall/admin
 
+also:
+rake db:test:prepare
+rspec # will display the documentation
+cucumber # will drive a headless web browser through the application
 
-There is no validation, no tests.
-This is only a "tracer bullet" as they say in the book _The Pragmatic Programmer_.
-It will allow us to verify that we are on the right track.
+The xml is accessible at /cinema_wall.xml
 
-The xml export link on the /admin/states page uses app/views/states/index.xml.builder.
-
-The next steps would be to pimp out the state form in app/views/admin/_form.html.haml
-with the javascripts.
-
-Then whatever comes up.
-
-Then deployment.
