@@ -92,3 +92,34 @@ Then(/^I should be able to toggle image\/text fields on each panel$/) do
     end
   end
 end
+
+Then(/^it should look like the file: "(.*?)"$/) do |path|
+  page.body.should eq open(Rails.root.join(path)).read.chomp
+end
+
+When(/^I choose pink from color$/) do
+  find("[data-color='#f0003e']").click
+end
+
+When(/^then i fill in panel two text with:$/) do |string|
+  within all('.panel')[1] do
+    fill_in 'Text',  with: string
+  end
+end
+
+When(/^i fill in panel three text with:$/) do |string|
+  within all('.panel')[2] do
+    fill_in 'Text',  with: string
+  end
+end
+
+Then(/^it should contain .*:$/) do |string|
+  pending('should probably render each panel in it\'s own _panel file ')
+  page.body.should include(string)
+end
+
+And(/^I add an image to panel one$/) do
+  within all('.panel')[0] do
+    attach_file 'Background file', Rails.root.join('features/github_image.png')
+  end
+end
