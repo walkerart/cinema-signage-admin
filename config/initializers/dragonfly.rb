@@ -15,18 +15,23 @@ module S3
 
 end
 
-Dragonfly[:images].configure_with(S3) do |c|
-  c.url_format = '/cinema_wall/admin/media/:job/:basename.:format'
-  c.url_host = 'http://walkerart.org' if Rails.env.production?
 
-  c.datastore.configure do |store|
-    store.bucket_name = 'cinema-wall'
-    store.storage_headers = {
-                'x-amz-acl' => 'public-read',
-                'Cache-Control' => 'max-age=315576000',
-                "x-rails-environment" => Rails.env}
+unless %w(test cucumber).include? Rails.env 
+
+  Dragonfly[:images].configure_with(S3) do |c|
+    c.url_format = '/cinema_wall/admin/media/:job/:basename.:format'
+    c.url_host = 'http://walkerart.org' if Rails.env.production?
+
+    c.datastore.configure do |store|
+      store.bucket_name = 'cinema-wall'
+      store.storage_headers = {
+        'x-amz-acl' => 'public-read',
+        'Cache-Control' => 'max-age=315576000',
+        "x-rails-environment" => Rails.env}
+    end
   end
-end
+
+end 
 
 if Rails.env.test? || Rails.env.development?
   Rails.application.middleware.delete Rack::Cache
