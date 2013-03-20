@@ -25,7 +25,7 @@ Scenario: First Slide
       <slide>
             <panel>
                 <position>1</position>
-                <type>a</type>
+                <type>full</type>
                 <text>WALKER</text>
 				        <color>#000000</color>
                 <background>#FFFFFF</background>
@@ -34,7 +34,7 @@ Scenario: First Slide
         <state>
             <panel>
                 <position>1</position>
-                <type>a</type>
+                <type>full</type>
                 <text>CINEMA</text>
 				        <color>#FFFFFF</color>
                 <background>#000000</background>
@@ -43,7 +43,7 @@ Scenario: First Slide
       <slide>
           <panel>
               <position>1</position>
-              <type>a</type>
+              <type>full</type>
               <text></text>
 			        <color>#000000</color>
               <background>/Users/ajwarnick/Desktop/Master_last_frame.jpg</background>

@@ -29,6 +29,8 @@ class Panel < ActiveRecord::Base
       "image"
     when background_file_uid.blank? && text.present?
       "detail"
+    when background_file_uid.blank? && text.present?
+      "title"
     end
   end
 
