@@ -1,0 +1,42 @@
+<cinema>
+  <title>Cinema Signage</title>
+  <link>http://walkerart.org/</link>
+  <description>Cinema Signage Feed</description>
+  <views>
+    <slide>
+      <panel>
+        <position>1</position>
+        <type>a</type>
+        <text>WALKER</text>
+        <color>#000000</color>
+        <background>#FFFFFF</background>
+      </panel>
+    </slide>
+    <slide>
+      <panel>
+        <position>1</position>
+        <type>a</type>
+        <text>CINEMA</text>
+        <color>#FFFFFF</color>
+        <background>#000000</background>
+      </panel>
+    </slide>
+    <slide>
+      <panel>
+        <position>1</position>
+        <type>a</type>
+        <text/>
+        <color>#000000</color>
+        <background>/Users/ajwarnick/Desktop/Master_last_frame.jpg</background>
+      </panel>
+    </slide>
+    <slide>
+      <panel>
+        <position>0</position>
+        <type>color</type>
+        <color>#ffffff</color>
+        <background>#ffffff</background>
+      </panel>
+    </slide>
+  </views>
+</cinema>
