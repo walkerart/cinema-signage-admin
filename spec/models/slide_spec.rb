@@ -22,6 +22,12 @@ describe Slide do
     slide.panels = [Panel.new, Panel.new]
     slide.should be_valid
   end
+
+  it "should respond to panel_count" do
+    slide = Slide.new()
+    slide.panels = [Panel.new, Panel.new]
+    slide.panel_count.should eq 2
+  end
   
   it "should be valid with 1 panel" do
     slide = Slide.new()

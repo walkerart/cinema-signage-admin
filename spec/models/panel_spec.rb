@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-def new_panel attrs
+def new_panel attrs={}
   Panel.new attrs, without_protection: true
 end
 
@@ -8,16 +8,23 @@ def panel_with_lines n
   new_panel text: (["o"] * n).join("\r\n")
 end
 
+def single_panel
+  new_panel.tap do |p|
+    p.stub :slide, full_slide
+  end
+end
+
 def black; '#000000' end
 def white; '#ffffff' end
-def white_slide; mock(Slide, background_color: white) end
+def white_slide; mock(Slide, background_color: white, panel_count: 3) end
+def full_slide;  mock(Slide, background_color: white, panel_count: 1) end
 
 describe Panel do
   before :each do
     Panel.any_instance.stub(:slide).and_return white_slide
   end
 
-  context "with and image" do
+  context "IMAGE: with and image" do
     subject(:panel){ new_panel( background_file_uid: 'features/github.jpg') }
     its(:position) { should be 0 }
     its(:panel_type) { should eq 'image' }
@@ -26,7 +33,7 @@ describe Panel do
     its(:background) { should end_with('.jpg') }
   end
 
-  context "with 2 lines of text" do
+  context "TITLE: with 2 lines of text" do
     subject(:panel){ panel_with_lines(2) }
     its(:position) { should be 0 }
     its(:panel_type) { should eq 'title' }
@@ -35,13 +42,18 @@ describe Panel do
     its(:background) { should eq white }
   end
 
-  context "with 5 lines of text" do
+  context "DETAIL: with 5 lines of text" do
     subject(:panel){ panel_with_lines(5) }
     its(:position) { should be 0 }
     its(:panel_type) { should eq 'detail' }
     its(:text) { should_not be_blank }
     its(:color) { should eq white }
     its(:background) { should eq black }
+  end
+
+  context "FULL: only panel of slide" do
+    subject(:panel){ single_panel }
+    its(:panel_type){ should eq 'full' }
   end
 
   its "default panel_type" do

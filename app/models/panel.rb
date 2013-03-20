@@ -45,17 +45,19 @@ class Panel < ActiveRecord::Base
 
   def panel_type
     @panel_type ||= case
-    when background_file_uid.blank? && text.blank?
-      "color"
-    when background_file_uid.present?
-      "image"
-    when number_of_lines == 1
-      'title'
-    when number_of_lines == 2
-      'title'
-    when number_of_lines == 5
-      'detail'
-    end
+                    when slide.panel_count == 1
+                      "full"
+                    when background_file_uid.blank? && text.blank?
+                      "color"                      
+                    when background_file_uid.present?
+                      "image"
+                    when number_of_lines == 1
+                      'title'
+                    when number_of_lines == 2
+                      'title'
+                    when number_of_lines == 5
+                      'detail'
+                    end
   end
 
   def to_s

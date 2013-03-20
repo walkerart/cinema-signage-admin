@@ -18,6 +18,10 @@ class Slide < ActiveRecord::Base
     @color || "#ffffff"
   end
 
+  def panel_count
+    panels.count
+  end
+
   def slide_type
     {1 => 'one', 3 => 'three'}.fetch panels.size, nil
   end
