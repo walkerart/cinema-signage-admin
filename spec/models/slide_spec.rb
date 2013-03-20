@@ -26,6 +26,7 @@ describe Slide do
   it "should respond to panel_count" do
     slide = Slide.new()
     slide.panels = [Panel.new, Panel.new]
+    slide.save
     slide.panel_count.should eq 2
   end
   
@@ -56,5 +57,10 @@ describe Slide do
   it "offers default color to panels through #background_color" do
     slide = Slide.new
     slide.background_color.should eq "#ffffff"
+  end
+
+  it "offers real color to panels through #background_color" do
+    slide = Slide.new color: "#ff000e"    
+    slide.background_color.should eq "#ff000e"
   end
 end

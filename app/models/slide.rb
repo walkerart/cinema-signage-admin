@@ -15,7 +15,7 @@ class Slide < ActiveRecord::Base
   attr_accessible :panels_attributes, :order, :color
 
   def background_color
-    @color || "#ffffff"
+    color || "#ffffff"
   end
 
   def panel_count

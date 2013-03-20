@@ -71,6 +71,6 @@ private
   end
 
   def number_of_lines
-    text.lines.count
+    text.present? ? text.lines.count : 0
   end
 end
