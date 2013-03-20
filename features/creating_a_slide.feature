@@ -17,6 +17,7 @@ Scenario: Default Slides
   Then I should be able to download the xml output of slides
   And it should look like the file: "features/example.xml"
 
+
 Scenario: Creating a Full Panel Slide 
   When I am on slides page
   And I click on the create full panel slide link
