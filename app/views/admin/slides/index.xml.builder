@@ -7,7 +7,7 @@ xml.cinema do
     xml.slide do
       xml.panel do
         xml.position 1
-        xml.type 'a'
+        xml.type 'full'
         xml.text "WALKER"
         xml.color "#000000"
         xml.background "#FFFFFF"
@@ -18,7 +18,7 @@ xml.cinema do
     xml.slide do
       xml.panel do
         xml.position 1
-        xml.type 'a'
+        xml.type 'full'
         xml.text "CINEMA"
         xml.color "#FFFFFF"
         xml.background "#000000"
@@ -29,7 +29,7 @@ xml.cinema do
     xml.slide do
       xml.panel do
         xml.position 1
-        xml.type 'a'
+        xml.type 'full'
         xml.text ''
         xml.color "#000000"
         xml.background '/Users/ajwarnick/Desktop/Master_last_frame.jpg'
