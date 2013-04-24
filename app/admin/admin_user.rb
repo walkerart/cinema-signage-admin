@@ -5,6 +5,10 @@ ActiveAdmin.register AdminUser do
     column :last_sign_in_at           
     column :sign_in_count             
     default_actions                   
+  end
+  
+  action_item do
+    link_to "Add User", new_admin_admin_user_path
   end                                 
 
   filter :email                       
